@@ -1,10 +1,9 @@
-
 import Foundation
 import CryptoKit
 import Combine
 
 
-
+// demo code - delete soon
 @available(macOS 10.15, *)
 actor HashCache {
   private(set) var hashes = [Int: String]()

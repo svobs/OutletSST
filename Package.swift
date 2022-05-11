@@ -8,17 +8,22 @@ let package = Package(
     platforms: [
         .macOS(.v12),
     ],
-products: [
+    products: [
         .executable(name: "OutletSST", targets: ["OutletSST"])
+//        .library(name: "OutletCommon", targets: ["OutletCommon"]),
+
     ],
     dependencies: [
-		.package(url: "https://github.com/svobs/OutletCommon.git", from: "1.0.0")
+//      .package(url: "git@github.com:svobs/OutletCommon.git", from: "1.0.1"),
+      .package(name: "OutletCommon", path: "../OutletCommon"),
+      .package(url: "git@github.com:fnc12/sqlite-orm-swift.git", from: "0.0.1")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .executableTarget(
-            name: "OutletSST"
+            name: "OutletSST",
+            dependencies: ["OutletCommon"]
             ),
         .testTarget(
             name: "OutletSSTTests",
